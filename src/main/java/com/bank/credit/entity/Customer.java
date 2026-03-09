@@ -25,7 +25,8 @@ public class Customer {
     private String phoneNumber;
 
     @Column
-    private String documentType;
+    @Enumerated(EnumType.STRING)
+    private DocumentType documentType;
 
     @Column
     private String documentNumber;
@@ -37,7 +38,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Credit> credits;
 
-    public Customer(Long customerId, String name, String lastName, String email, String phoneNumber, String documentType, String documentNumber, CustomerStatus status) {
+    public Customer(Long customerId, String name, String lastName, String email, String phoneNumber, DocumentType documentType, String documentNumber, CustomerStatus status) {
         this.customerId = customerId;
         this.name = name;
         this.lastName = lastName;
@@ -91,11 +92,11 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getDocumentType() {
+    public DocumentType getDocumentType() {
         return documentType;
     }
 
-    public void setDocumentType(String documentType) {
+    public void setDocumentType(DocumentType documentType) {
         this.documentType = documentType;
     }
 
@@ -128,4 +129,21 @@ public class Customer {
         Inactivo,
         Moroso
     }
+
+    public enum DocumentType {
+        CEDULA_CIUDADANIA("Cédula de ciudadanía"),
+        PASAPORTE("Pasaporte"),
+        CEDULA_EXTRANJERIA("Cédula de extranjería");
+
+        private final String label;
+
+        DocumentType(String label){
+            this.label = label;
+        }
+
+        public String getLabel(){
+            return label;
+        }
+    }
+
 }
