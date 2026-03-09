@@ -1,0 +1,4 @@
+package com.bank.credit.entity;
+
+public class UserTest {
+}

@@ -1,0 +1,60 @@
+scalar Date 
+scalar DateTime
+
+type Customer {
+    customerId: ID!
+    name: String!
+    lastName: String
+    email: String!
+    phoneNumber: String!
+    documentType: String!
+    documentNumber: String!
+    status: String!
+    credits: [Credit!]!
+}
+
+type Credit {
+    creditId: ID!
+    customerId: ID!
+    type: String!
+    amount: Float!
+    balance: Float!
+    grantedDate: DateTime!
+    paymentsDay: Int!
+    paymentsNumber: Int!
+    paymentValue: Float!
+    paymentsDelayed: Int!
+    interestRate: Float!
+    status: String!
+}
+
+type User {
+    userId: ID!
+    customerId: ID!
+    email: String!
+    password: String!
+    passwordSalt: String!
+    customer: Customer!
+}
+
+type Query {
+    allCustomers: [Customer]
+    customerById(id: ID): Customer
+
+    allUsers: [User]
+    userById(id: ID): User
+
+    Login(email: String!, password: String!): User
+}
+
+type Mutation {
+    addCustomer(name:String!, lastName:String, email:String!, phoneNumber: String!,
+                documentType: String!, documentNumber: String!): Customer
+    
+    registerCustomer(name:String!, lastName:String!, email:String!, password: String!,
+                     phoneNumber:String!, documentType:String!, documentNumber: String!): User
+
+    addUser(customerId:ID!, email:String!, password:String!): User
+    
+    grantCredit(customerId:ID!, type:String!, amount:Float!, paymentsNumber: Int!): Credit
+}
