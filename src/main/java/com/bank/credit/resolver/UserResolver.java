@@ -1,7 +1,7 @@
 package com.bank.credit.resolver;
 
 import com.bank.credit.entity.User;
-import com.bank.credit.entity.User.Role;
+import com.bank.credit.entity.User.UserRole;
 import com.bank.credit.entity.Customer;
 import com.bank.credit.service.UserService;
 import com.bank.credit.service.CustomerService;
@@ -34,7 +34,7 @@ public class UserResolver {
 
     @MutationMapping
     public User addUser(@Argument Long customerId, @Argument String email,
-                                @Argument String password, @Argument User.Role role){
+                                @Argument String password, @Argument User.UserRole role){
                                                                
         return userService.addUser(customerId, email, password, role);
     }
@@ -46,7 +46,7 @@ public class UserResolver {
         
         Customer customer = customerService.addCustomer(name, lastName, email, phoneNumber, documentType, documentNumber);
         
-        User user = userService.addUser(customer.getCustomerId(), email, password, Role.Usuario);
+        User user = userService.addUser(customer.getCustomerId(), email, password, UserRole.Usuario);
         user.setCustomer(customer);
         return user;
 

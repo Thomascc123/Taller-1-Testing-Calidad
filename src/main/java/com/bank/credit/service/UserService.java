@@ -27,7 +27,7 @@ public class UserService {
                                  .orElseThrow(() -> new RuntimeException("user not found"));
     }
 
-    public User addUser(Long customerId, String email, String password, User.Role role){
+    public User addUser(Long customerId, String email, String password, User.UserRole role){
 
         User user = new User();
         user.setCustomerId(customerId);

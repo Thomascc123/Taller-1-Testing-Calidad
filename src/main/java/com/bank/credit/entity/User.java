@@ -22,13 +22,13 @@ public class User {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private Role role = Role.Usuario;
+    private UserRole role = UserRole.Usuario;
 
     @OneToOne
     @JoinColumn(name = "customer_id", insertable = false, updatable=false)
     private Customer customer;
 
-    public User(Long userId, Long customerId, String email, String password, Role role) {
+    public User(Long userId, Long customerId, String email, String password, UserRole role) {
         this.userId = userId;
         this.customerId = customerId;
         this.email = email;
@@ -79,15 +79,15 @@ public class User {
         this.customer = customer;
     }
 
-    public Role getRole() {
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 
-    public enum Role {
+    public enum UserRole {
         Usuario,
         Administrador,
     }

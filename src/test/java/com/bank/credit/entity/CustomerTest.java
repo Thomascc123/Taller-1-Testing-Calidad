@@ -48,7 +48,7 @@ public class CustomerTest {
     }
 
     @Test
-    @DisplayName("Setter and getter test for customerId")
+    @DisplayName("Setter and getter test for name")
     public void getterAndSetterTestName(){
         Customer customerEntity = new Customer();
 
@@ -56,5 +56,56 @@ public class CustomerTest {
 
         assertEquals("Mariana", customerEntity.getName());
     }
+
+    @Test
+    @DisplayName("Setter and getter test for last name")
+    public void getterAndSetterTestLastname(){
+        Customer customerEntity = new Customer();
+
+        customerEntity.setLastName("Hernández");
+
+        assertEquals("Hernández", customerEntity.getLastName());
+    }
+
+    @Test
+    @DisplayName("Setter and getter test for phone number")
+    public void getterAndSetterTestPhoneNumber(){
+        Customer customerEntity = new Customer();
+
+        customerEntity.setPhoneNumber("3103203040");
+
+        assertEquals("3103203040", customerEntity.getPhoneNumber());
+    }
+
+    @Test
+    @DisplayName("Setter and getter test for document type")
+    public void getterAndSetterTestDocumentType(){
+        Customer customerEntity = new Customer();
+
+        customerEntity.setDocumentType(DocumentType.PASAPORTE);
+
+        assertEquals(DocumentType.PASAPORTE, customerEntity.getDocumentType());
+    }
+
+    @Test
+    @DisplayName("Setter and getter test for document number")
+    public void getterAndSetterDocumentNumber(){
+        Customer customerEntity = new Customer();
+
+        customerEntity.setDocumentNumber("10192354010");
+
+        assertEquals("10192354010", customerEntity.getDocumentNumber());
+    }
+
+    @Test
+    @DisplayName("Setter and getter test for customer status")
+    public void getterAndSetterCustomerStatus(){
+        Customer customerEntity = new Customer();
+
+        customerEntity.setStatus(CustomerStatus.Inactivo);
+
+        assertEquals(CustomerStatus.Moroso, customerEntity.getStatus());
+    }
+
 }
 

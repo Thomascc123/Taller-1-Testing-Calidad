@@ -8,6 +8,7 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import com.bank.credit.entity.Customer;
+import com.bank.credit.entity.Customer.DocumentType;
 import com.bank.credit.service.CustomerService;
 
 @Controller
@@ -32,7 +33,6 @@ public class CustomerResolver {
     public Customer addCustomer(@Argument String name, @Argument String lastName, 
                                 @Argument String email, @Argument String phoneNumber, 
                                 @Argument String documentType, @Argument String documentNumber){
-
         return customerService.addCustomer(name, lastName, email, phoneNumber, documentType, documentNumber);
     }
 
