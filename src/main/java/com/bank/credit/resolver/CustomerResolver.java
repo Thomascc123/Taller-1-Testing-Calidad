@@ -8,7 +8,6 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import com.bank.credit.entity.Customer;
-import com.bank.credit.entity.Customer.DocumentType;
 import com.bank.credit.service.CustomerService;
 
 @Controller

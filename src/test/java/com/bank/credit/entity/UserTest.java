@@ -3,8 +3,6 @@ package com.bank.credit.entity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.bank.credit.entity.Customer.CustomerStatus;
-import com.bank.credit.entity.Customer.DocumentType;
 import com.bank.credit.entity.User.UserRole;
 
 import static org.junit.jupiter.api.Assertions.*;

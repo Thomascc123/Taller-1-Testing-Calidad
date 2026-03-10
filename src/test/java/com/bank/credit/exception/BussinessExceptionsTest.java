@@ -1,10 +1,8 @@
-package exception;
+package com.bank.credit.exception;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
-
-import com.bank.credit.exception.CustomerNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
