@@ -33,7 +33,7 @@ public class CustomerService {
             
         
         try{   
-            DocumentType enumDocumentType = DocumentType.valueOf(documentType);
+            DocumentType enumDocumentType = DocumentType.fromLabel(documentType);
             Customer customer = new Customer();
             customer.setName(name);
             customer.setLastName(lastName);

@@ -144,6 +144,13 @@ public class Customer {
         public String getLabel(){
             return label;
         }
+
+        public static DocumentType fromLabel(String label){
+            for (DocumentType type : values()){
+                if (type.label.equals(label)) return type;
+            }
+            throw new IllegalArgumentException("Invalid document type "+label);
+        }
     }
 
 }

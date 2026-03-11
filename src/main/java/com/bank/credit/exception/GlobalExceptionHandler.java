@@ -1,36 +1,52 @@
 package com.bank.credit.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
+
+import org.springframework.graphql.data.method.annotation.GraphQlExceptionHandler;
+import org.springframework.graphql.execution.ErrorType;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.http.*;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.server.ResponseStatusException;
+
+import graphql.GraphQLError;
+import graphql.GraphqlErrorBuilder;
 
 import java.util.Map;
 
-@RestControllerAdvice
+@ControllerAdvice
 public class GlobalExceptionHandler {
 
   // BusinessException and its subclasses
-  @ExceptionHandler(BusinessException.class)
-  public ResponseEntity<ProblemDetail> handleBusiness(BusinessException ex, HttpServletRequest req) {
-    ProblemDetail pd = ProblemDetail.forStatusAndDetail(ex.getStatus(), ex.getMessage());
-    pd.setTitle("Business rule violation");
-    pd.setProperty("code", ex.getCode());
-    pd.setProperty("path", req.getRequestURI());
-    return ResponseEntity.status(ex.getStatus()).body(pd);
+  @GraphQlExceptionHandler(BusinessException.class)
+  public GraphQLError handleBusinessException(BusinessException ex) {
+
+     Map<String, Object> extensions = Map.of(
+        "code", ex.getCode(),
+        "status", ex.getStatus().value()
+    );
+
+    return GraphqlErrorBuilder.newError()
+        .message(ex.getMessage())
+        .errorType(ErrorType.BAD_REQUEST)
+        .extensions(extensions)
+        .build();
   }
 
   // Validation errors
-  @ExceptionHandler(MethodArgumentNotValidException.class)
-  public ResponseEntity<ProblemDetail> handleValidation(MethodArgumentNotValidException ex, HttpServletRequest req) {
-    ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, "Validation failed");
-    pd.setTitle("Invalid request");
-    pd.setProperty("path", req.getRequestURI());
-    pd.setProperty("errors", ex.getBindingResult().getFieldErrors().stream()
-      .map(fe -> Map.of("field", fe.getField(), "message", "Se deben especificar todos los campos requeridos"))
-      .toList());
-    return ResponseEntity.badRequest().body(pd);
+  @GraphQlExceptionHandler(MethodArgumentNotValidException.class)
+  public GraphQLError handleValidation(MethodArgumentNotValidException ex) {
+    Map<String, Object> extensions = Map.of(
+        "code", "NOT_VALID_ARGUMENT",
+        "status", HttpStatus.BAD_REQUEST.value()
+    );
+
+    return GraphqlErrorBuilder.newError()
+        .message("Argumento no válido")
+        .errorType(ErrorType.BAD_REQUEST)
+        .extensions(extensions)
+        .build();
   }
 
   // Para ResponseStatusException (si las usas en algún lado)
