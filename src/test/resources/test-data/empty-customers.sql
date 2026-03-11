@@ -1,1 +1,2 @@
 DELETE FROM customer;
+ALTER TABLE customer AUTO_INCREMENT = 1;
