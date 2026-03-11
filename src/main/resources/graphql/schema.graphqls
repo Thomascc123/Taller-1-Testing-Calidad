@@ -19,7 +19,7 @@ type Credit {
     type: String!
     amount: Float!
     balance: Float!
-    grantedDate: DateTime!
+    grantedDate: Date!
     paymentsDay: Int!
     paymentsNumber: Int!
     paymentValue: Float!
@@ -39,10 +39,10 @@ type User {
 
 type Query {
     allCustomers: [Customer]
-    customerById(id: ID): Customer
+    customerById(customerId: ID): Customer
 
     allUsers: [User]
-    userById(id: ID): User
+    userById(UserId: ID): User
 
     Login(email: String!, password: String!): User
 }

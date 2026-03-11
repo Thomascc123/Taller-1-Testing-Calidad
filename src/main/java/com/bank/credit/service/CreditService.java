@@ -1,5 +1,6 @@
 package com.bank.credit.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -36,12 +37,12 @@ public class CreditService {
         Customer customer = customerRepository.findById(customerId)
         .orElseThrow(CustomerNotFoundException::new);
 
-        if (!customer.getStatus().equals(CustomerStatus.Activo)){
-            throw new InactiveCustomerException();
-        }
-
         if (customer.getStatus().equals(CustomerStatus.Moroso)){
             throw new DefaulterCustomerException();
+        }
+
+        if (!customer.getStatus().equals(CustomerStatus.Activo)){
+            throw new InactiveCustomerException();
         }
 
         Double interestRate = computeInterestRate(type); 
@@ -51,7 +52,7 @@ public class CreditService {
 
         Double paymentValue = computePaymentValue(amount, interestRate, paymentsNumber);
 
-        LocalDateTime grantedDate = LocalDateTime.now();
+        LocalDate grantedDate = LocalDateTime.now().toLocalDate();
         Short paymentsDay = (short) (grantedDate.getDayOfMonth());
         if(paymentsDay >30){
             paymentsDay = 30;

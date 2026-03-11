@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,7 +26,7 @@ public class CreditTest {
     @DisplayName("Full argument constructor test")
     void testAllArgsConstructor(){
         Customer customerTest = new Customer();
-        LocalDateTime time = LocalDateTime.of(2012, 6, 30, 12, 0);
+        LocalDate time = LocalDateTime.of(2012, 6, 30, 12, 0).toLocalDate();
 
         Credit credit = new Credit(345678456L, 1234235355L, Credit.CreditType.Hipotecario, 22000.05,  0.5,time, (short)74,  (short)3543, 77000.00, (short) 7, 0.1,  Credit.CreditStatus.Activo, customerTest);
 
@@ -97,7 +98,7 @@ public class CreditTest {
     @Test
     @DisplayName("Getter and setter test of grantedDate")
     void testGrantedDateGetterSetter(){
-        LocalDateTime date = LocalDateTime.of(2020, 7,5, 13, 25, 33);
+        LocalDate date = LocalDateTime.of(2020, 7,5, 13, 25, 33).toLocalDate();
         Credit credit = new Credit();
 
         credit.setGrantedDate(date);

@@ -1,6 +1,6 @@
 package com.bank.credit.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.*;
 
@@ -26,7 +26,7 @@ public class Credit {
     private Double balance;
 
     @Column 
-    private LocalDateTime grantedDate;
+    private LocalDate grantedDate;
 
     @Column
     private Short paymentsDay;
@@ -52,7 +52,7 @@ public class Credit {
     private Customer customer;
 
     public Credit(Long creditId, Long customerId, CreditType type, Double amount, Double balance,
-            LocalDateTime grantedDate, Short paymentsDay, Short paymentsNumber, Double paymentValue,
+            LocalDate grantedDate, Short paymentsDay, Short paymentsNumber, Double paymentValue,
             Short paymentsDelayed, Double interestRate, CreditStatus status, Customer customer) {
         this.creditId = creditId;
         this.customerId = customerId;
@@ -112,11 +112,11 @@ public class Credit {
         this.balance = balance;
     }
 
-    public LocalDateTime getGrantedDate() {
+    public LocalDate getGrantedDate() {
         return grantedDate;
     }
 
-    public void setGrantedDate(LocalDateTime grantedDate) {
+    public void setGrantedDate(LocalDate grantedDate) {
         this.grantedDate = grantedDate;
     }
 
