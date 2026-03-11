@@ -82,6 +82,7 @@ public class CustomerServiceTest{
     void ShoudReturnExceptionWhenNullCustomer(){
         //Arrange
         when(customerRepository.findById(55L)).thenReturn(Optional.empty());
+
         //Act
         RuntimeException thrown = assertThrows(CustomerNotFoundException.class, () -> {
             customerService.getCustomer(55L);

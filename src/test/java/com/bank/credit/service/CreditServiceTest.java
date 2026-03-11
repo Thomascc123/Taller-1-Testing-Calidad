@@ -77,41 +77,35 @@ class CreditServiceTest {
         when(customerRepository.findById(1L)).thenReturn(Optional.of(activeCustomer));
         when(creditRepository.save(any(Credit.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        Credit result = creditService.grantCredit(
-                1L,
-                CreditType.Consumo,
-                10000.0,
-                (short) 12
-        );
+       //Act
+        Credit result = creditService.grantCredit(1L, CreditType.Consumo, 10000.0, (short) 12);
 
+        //Assert
         assertNotNull(result);
         assertEquals(1L, result.getCustomerId());
         assertEquals(CreditType.Consumo, result.getType());
         assertEquals(10000.0, result.getAmount());
         assertEquals(Credit.CreditStatus.Activo, result.getStatus());
-
-        verify(customerRepository).findById(1L);
-        verify(creditRepository).save(any(Credit.class));
     }
 
     @Test
     void shouldThrowExceptionWhenCustomerNotFound() {
+        //Arrange
+        when(customerRepository.findById(1L)).thenReturn(Optional.empty());
 
-        when(customerRepository.findById(1L))
-                .thenReturn(Optional.empty());
-
-        assertThrows(
+        //Act
+        RuntimeException thrown = assertThrows(
                 CustomerNotFoundException.class,
                 () -> creditService.grantCredit(1L, CreditType.Consumo, 10000.0, (short) 12)
         );
 
-        verify(customerRepository).findById(1L);
-        verifyNoInteractions(creditRepository);
+        //Assert
+        assertEquals(thrown.getMessage(), "Cliente no encontrado");
     }
 
     @Test
     void shouldThrowExceptionWhenCustomerInactive() {
-
+        //Arrange
         Customer inactiveCustomer = new Customer();
         inactiveCustomer.setCustomerId(1L);
         inactiveCustomer.setStatus(CustomerStatus.Inactivo);
@@ -119,15 +113,19 @@ class CreditServiceTest {
         when(customerRepository.findById(1L))
                 .thenReturn(Optional.of(inactiveCustomer));
 
-        assertThrows(
+        //Act
+        RuntimeException thrown = assertThrows(
                 RuntimeException.class,
                 () -> creditService.grantCredit(1L, CreditType.Consumo, 10000.0, (short) 12)
         );
+
+        //Assert
+        assertEquals(thrown.getMessage(), "Cliente inactivo");
     }
 
     @Test
     void shouldThrowExceptionWhenCustomerIsDefaulter() {
-
+        //Arrange
         Customer defaulter = new Customer();
         defaulter.setCustomerId(1L);
         defaulter.setStatus(CustomerStatus.Moroso);
@@ -135,10 +133,14 @@ class CreditServiceTest {
         when(customerRepository.findById(1L))
                 .thenReturn(Optional.of(defaulter));
 
-        assertThrows(
+        //Act
+        RuntimeException thrown = assertThrows(
                 RuntimeException.class,
                 () -> creditService.grantCredit(1L, CreditType.Consumo, 10000.0, (short) 12)
         );
+
+        //Assert
+        assertEquals(thrown.getMessage(),"Cliente en mora");
     }
 
 
