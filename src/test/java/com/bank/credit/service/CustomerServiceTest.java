@@ -1,5 +1,8 @@
 package com.bank.credit.service;
 
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -12,7 +15,6 @@ import com.bank.credit.entity.Customer;
 import com.bank.credit.exception.CustomerNotFoundException;
 import com.bank.credit.repository.CustomerRepository;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
