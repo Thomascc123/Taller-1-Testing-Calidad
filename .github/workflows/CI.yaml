@@ -31,7 +31,9 @@ jobs:
     steps:
       #Check-out your repository under $GITHUB_WORKSPACE, so your workflow can access it
       - name: Checkout
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       #Set up JDK 17
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -49,16 +51,9 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      # Enviroment variables
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/bank_test
-          SPRING_DATASOURCE_USERNAME: bankapp
-          SPRING_DATASOURCE_PASSWORD: strongPassword254!$
-
       #Analyze project with SonarCloud
       - name: Analyze with SonarCloud
+        #Enviroment variables
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
