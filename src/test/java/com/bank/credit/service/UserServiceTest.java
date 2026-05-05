@@ -6,6 +6,7 @@ import org.springframework.test.context.ActiveProfiles;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.bank.credit.entity.User;
+import com.bank.credit.exception.CustomerHasUserException;
 import com.bank.credit.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

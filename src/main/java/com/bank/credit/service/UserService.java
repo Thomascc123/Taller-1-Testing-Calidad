@@ -15,11 +15,9 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private final CustomerRepository customerRepository;
 
     public UserService(UserRepository userRepository, CustomerRepository customerRepository){
         this.userRepository = userRepository;
-        this.customerRepository = customerRepository;
     }
 
     public List<User> getAllUsers(){
