@@ -10,7 +10,7 @@ Feature: Grant Credit to a Customer Validation
         mutation{
             grantCredit(
                 customerId: 1
-                type: "Consumo"
+                type: "CONSUMO"
                 amount: 2500000.0
                 paymentsNumber: 36
             ){
@@ -30,9 +30,9 @@ Feature: Grant Credit to a Customer Validation
         {
             creditId: '#regex \\d+',
             customerId: '1',
-            type: 'Consumo',
+            type: 'CONSUMO',
             amount: 2500000.0,
-            status: 'Activo'
+            status: 'ACTIVO'
         }
         """
     
@@ -44,7 +44,7 @@ Feature: Grant Credit to a Customer Validation
         mutation{
             grantCredit(
                 customerId: 2
-                type: "Educativo"
+                type: "EDUCATIVO"
                 amount: 16000000.0
                 paymentsNumber: 48
             ){
@@ -74,7 +74,7 @@ Feature: Grant Credit to a Customer Validation
         mutation{
             grantCredit(
                 customerId: 3
-                type: "Hipotecario"
+                type: "HIPOTECARIO"
                 amount: 65000000.0
                 paymentsNumber: 120
             ){

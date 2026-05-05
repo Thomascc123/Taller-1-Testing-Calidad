@@ -48,7 +48,7 @@ class UserTest {
 
         userEntity.setCustomerId(1L);
 
-        assertEquals(1L, userEntity.getUserId());
+        assertEquals(1L, userEntity.getCustomerId());
     }
 
     @Test

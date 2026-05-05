@@ -1,7 +1,5 @@
 package com.bank.credit.service;
 
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,8 +20,7 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
-@ActiveProfiles("test")
+
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
     @InjectMocks

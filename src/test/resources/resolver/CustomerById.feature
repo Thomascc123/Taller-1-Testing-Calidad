@@ -33,7 +33,7 @@ Feature: Finding Customer Validation
             phoneNumber: '3154238456',
             documentType: 'CEDULA_CIUDADANIA',
             documentNumber: '1057452245',
-            status: 'Activo'
+            status: 'ACTIVO'
         }
         """
     

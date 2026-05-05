@@ -104,7 +104,7 @@ class CustomerTest {
 
         customerEntity.setStatus(CustomerStatus.INACTIVO);
 
-        assertEquals(CustomerStatus.MOROSO, customerEntity.getStatus());
+        assertEquals(CustomerStatus.INACTIVO, customerEntity.getStatus());
     }
 
 }
