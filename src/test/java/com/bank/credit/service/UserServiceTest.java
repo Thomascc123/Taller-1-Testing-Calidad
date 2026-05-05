@@ -106,12 +106,12 @@ class UserServiceTest {
         userAdded.setEmail("alvarez@gmail.com");
         userAdded.setPassword("aswty*34");
         userAdded.setCustomerId(1L);
-        userAdded.setRole(User.UserRole.Usuario);
+        userAdded.setRole(User.UserRole.USUARIO);
 
         when(userRepository.save(any(User.class))).thenReturn(userAdded);
 
         //Act
-        User result = usertService.addUser(1L,"alvarez@gmail.com","aswty*34",User.UserRole.Usuario);
+        User result = usertService.addUser(1L,"alvarez@gmail.com","aswty*34",User.UserRole.USUARIO);
 
         //Assert
         assertNotNull(result);
@@ -131,7 +131,7 @@ class UserServiceTest {
         //Act
 
         RuntimeException thrown = assertThrows(CustomerHasUserException.class, () -> {
-            usertService.addUser(1L, "montoya@mail.com", "bdfd45.>>3", User.UserRole.Usuario);
+            usertService.addUser(1L, "montoya@mail.com", "bdfd45.>>3", User.UserRole.USUARIO);
         });
 
         //Assert

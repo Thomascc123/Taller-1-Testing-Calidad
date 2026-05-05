@@ -22,7 +22,7 @@ public class User {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private UserRole role = UserRole.Usuario;
+    private UserRole role = UserRole.USUARIO;
 
     @OneToOne
     @JoinColumn(name = "customer_id", insertable = false, updatable=false)
@@ -88,7 +88,7 @@ public class User {
     }
 
     public enum UserRole {
-        Usuario,
-        Administrador,
+        USUARIO,
+        ADMINISTRADOR,
     }
 }

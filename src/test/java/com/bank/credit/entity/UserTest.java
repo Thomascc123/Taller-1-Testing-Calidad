@@ -22,13 +22,13 @@ class UserTest {
     @Test
     @DisplayName("All arguments constructor test")
     void allArgsConstructorTest(){
-        User userEntity = new User(1L, 2L, "rodrigo_gutierrez2020@hotmail.com", "superPsswordRodrigoD_1234",UserRole.Usuario);
+        User userEntity = new User(1L, 2L, "rodrigo_gutierrez2020@hotmail.com", "superPsswordRodrigoD_1234",UserRole.USUARIO);
 
         assertEquals(1L, userEntity.getUserId());
         assertEquals(2L, userEntity.getCustomerId());
         assertEquals("rodrigo_gutierrez2020@hotmail.com", userEntity.getEmail());
         assertEquals("superPsswordRodrigoD_1234", userEntity.getPassword());
-        assertEquals(UserRole.Usuario, userEntity.getRole());
+        assertEquals(UserRole.USUARIO, userEntity.getRole());
     }
 
     @Test
@@ -76,8 +76,8 @@ class UserTest {
     void getterAndSetterTestRole(){
         User userEntity = new User();
 
-        userEntity.setRole(UserRole.Administrador);
+        userEntity.setRole(UserRole.ADMINISTRADOR);
 
-        assertEquals(UserRole.Administrador, userEntity.getRole());
+        assertEquals(UserRole.ADMINISTRADOR, userEntity.getRole());
     }
 }

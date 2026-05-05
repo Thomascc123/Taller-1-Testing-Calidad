@@ -23,7 +23,7 @@ class CustomerTest {
     @Test
     @DisplayName("Full arguments constructor test")
     void allArgsConstructorTest(){
-        Customer customerEntity = new Customer(1L, "Emiliano", "Gonzalez", "emil_gonzalez@gmail.com", "3146548792",DocumentType.CEDULA_CIUDADANIA,"1019542365",CustomerStatus.Activo);
+        Customer customerEntity = new Customer(1L, "Emiliano", "Gonzalez", "emil_gonzalez@gmail.com", "3146548792",DocumentType.CEDULA_CIUDADANIA,"1019542365",CustomerStatus.ACTIVO);
 
         assertNotNull(customerEntity);
         assertEquals(1L, customerEntity.getCustomerId());
@@ -33,7 +33,7 @@ class CustomerTest {
         assertEquals("3146548792", customerEntity.getPhoneNumber());
         assertEquals(DocumentType.CEDULA_CIUDADANIA, customerEntity.getDocumentType());
         assertEquals("1019542365", customerEntity.getDocumentNumber());
-        assertEquals(CustomerStatus.Activo, customerEntity.getStatus());
+        assertEquals(CustomerStatus.ACTIVO, customerEntity.getStatus());
 
     }
 
@@ -102,9 +102,9 @@ class CustomerTest {
     void getterAndSetterCustomerStatus(){
         Customer customerEntity = new Customer();
 
-        customerEntity.setStatus(CustomerStatus.Inactivo);
+        customerEntity.setStatus(CustomerStatus.INACTIVO);
 
-        assertEquals(CustomerStatus.Moroso, customerEntity.getStatus());
+        assertEquals(CustomerStatus.MOROSO, customerEntity.getStatus());
     }
 
 }

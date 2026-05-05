@@ -47,7 +47,7 @@ public class UserService {
 
     }
 
-    public User Login(String userEmail, String userPasword){
+    public User login(String userEmail, String userPasword){
         
         try{
             User user = userRepository.findByEmail(userEmail);
