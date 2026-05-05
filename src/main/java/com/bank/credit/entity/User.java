@@ -3,6 +3,7 @@ package com.bank.credit.entity;
 import jakarta.persistence.*;
 
 
+
 @Entity
 @Table(name="user")
 public class User {
