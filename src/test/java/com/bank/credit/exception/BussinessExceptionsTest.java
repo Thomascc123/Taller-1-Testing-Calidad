@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Custom Bussiness Exceptions Tests")
-public class BussinessExceptionsTest {
+class BussinessExceptionsTest {
 
     @Test
     @DisplayName("Customer Not Found Exception Test")

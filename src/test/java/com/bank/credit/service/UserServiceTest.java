@@ -22,7 +22,7 @@ import java.util.Optional;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class UserServiceTest {
+class UserServiceTest {
     @InjectMocks
     private UserService usertService;
 
@@ -49,8 +49,9 @@ public class UserServiceTest {
         List<User> result = usertService.getAllUsers();
 
         //Assert
-        assertEquals(result, users);
-        assertEquals(result.size(), 3);
+        assertEquals(users, result);
+        assertEquals(3, result.size());
+
     }
 
     @Test
@@ -92,7 +93,7 @@ public class UserServiceTest {
         });
 
         //Asser
-        assertEquals(thrown.getMessage(), "user not found");
+        assertEquals("Usuario no encontrado", thrown.getMessage());
     }
 
     @Test
@@ -112,7 +113,7 @@ public class UserServiceTest {
 
         //Assert
         assertNotNull(result);
-        assertEquals(result.getUserId(), 1L);
+        assertEquals(1L, result.getUserId());
     }
 
     @Test

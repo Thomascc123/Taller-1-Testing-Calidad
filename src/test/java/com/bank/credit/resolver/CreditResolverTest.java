@@ -8,12 +8,12 @@ import com.intuit.karate.junit5.Karate;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
-public class CreditResolverTest {
+class CreditResolverTest {
 
     @Karate.Test
     @Sql("/test-data/add-customers-for-credits.sql")
     Karate grantCreditTest() {
-        return Karate.run("GrantCredit").relativeTo(getClass());
+        return Karate.run("classpath:resolver/GrantCredit.feature");
     }
 
 }

@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @DisplayName("Credit Entity Tests")
-public class CreditTest {
+class CreditTest {
     @Test
     @DisplayName("no-args constructor test")
     void testNoArgsConstructor() {

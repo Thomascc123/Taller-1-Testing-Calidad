@@ -100,7 +100,7 @@ class CreditServiceTest {
         );
 
         //Assert
-        assertEquals(thrown.getMessage(), "Cliente no encontrado");
+        assertEquals("Cliente no encontrado", thrown.getMessage());
     }
 
     @Test
@@ -120,7 +120,7 @@ class CreditServiceTest {
         );
 
         //Assert
-        assertEquals(thrown.getMessage(), "Cliente inactivo");
+        assertEquals("Cliente inactivo", thrown.getMessage());
     }
 
     @Test
@@ -140,7 +140,7 @@ class CreditServiceTest {
         );
 
         //Assert
-        assertEquals(thrown.getMessage(),"Cliente en mora");
+        assertEquals("Cliente en mora", thrown.getMessage());
     }
 
 

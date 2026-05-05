@@ -9,11 +9,11 @@ import com.bank.credit.entity.Customer.DocumentType;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Customer entity tests")
-public class CustomerTest {
+class CustomerTest {
 
     @Test
     @DisplayName("No arguments constructor test")
-    public void noArgsConstructorTest(){
+    void noArgsConstructorTest(){
         Customer customerEntity = new Customer();
         
         assertNotNull(customerEntity);
@@ -22,7 +22,7 @@ public class CustomerTest {
 
     @Test
     @DisplayName("Full arguments constructor test")
-    public void allArgsConstructorTest(){
+    void allArgsConstructorTest(){
         Customer customerEntity = new Customer(1L, "Emiliano", "Gonzalez", "emil_gonzalez@gmail.com", "3146548792",DocumentType.CEDULA_CIUDADANIA,"1019542365",CustomerStatus.Activo);
 
         assertNotNull(customerEntity);
@@ -39,7 +39,7 @@ public class CustomerTest {
 
     @Test
     @DisplayName("Setter and getter test for customerId")
-    public void getterAndSetterTestCustomerId(){
+    void getterAndSetterTestCustomerId(){
         Customer customerEntity = new Customer();
 
         customerEntity.setCustomerId(10L);
@@ -49,7 +49,7 @@ public class CustomerTest {
 
     @Test
     @DisplayName("Setter and getter test for name")
-    public void getterAndSetterTestName(){
+    void getterAndSetterTestName(){
         Customer customerEntity = new Customer();
 
         customerEntity.setName("Mariana");
@@ -59,7 +59,7 @@ public class CustomerTest {
 
     @Test
     @DisplayName("Setter and getter test for last name")
-    public void getterAndSetterTestLastname(){
+    void getterAndSetterTestLastname(){
         Customer customerEntity = new Customer();
 
         customerEntity.setLastName("Hernández");
@@ -69,7 +69,7 @@ public class CustomerTest {
 
     @Test
     @DisplayName("Setter and getter test for phone number")
-    public void getterAndSetterTestPhoneNumber(){
+    void getterAndSetterTestPhoneNumber(){
         Customer customerEntity = new Customer();
 
         customerEntity.setPhoneNumber("3103203040");
@@ -79,7 +79,7 @@ public class CustomerTest {
 
     @Test
     @DisplayName("Setter and getter test for document type")
-    public void getterAndSetterTestDocumentType(){
+    void getterAndSetterTestDocumentType(){
         Customer customerEntity = new Customer();
 
         customerEntity.setDocumentType(DocumentType.PASAPORTE);
@@ -89,7 +89,7 @@ public class CustomerTest {
 
     @Test
     @DisplayName("Setter and getter test for document number")
-    public void getterAndSetterDocumentNumber(){
+    void getterAndSetterDocumentNumber(){
         Customer customerEntity = new Customer();
 
         customerEntity.setDocumentNumber("10192354010");
@@ -99,7 +99,7 @@ public class CustomerTest {
 
     @Test
     @DisplayName("Setter and getter test for customer status")
-    public void getterAndSetterCustomerStatus(){
+    void getterAndSetterCustomerStatus(){
         Customer customerEntity = new Customer();
 
         customerEntity.setStatus(CustomerStatus.Inactivo);

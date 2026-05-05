@@ -28,7 +28,7 @@ public class UserService {
 
     public User getUser(Long userId){
         return userRepository.findById(userId)
-                                 .orElseThrow(() -> new RuntimeException("user not found"));
+                                 .orElseThrow(() -> new UserNotFoundException());
     }
 
     public User addUser(Long customerId, String email, String password, User.UserRole role){

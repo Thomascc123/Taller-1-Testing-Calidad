@@ -8,30 +8,30 @@ import com.intuit.karate.junit5.Karate;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
-public class CustomerResolverTest {
+class CustomerResolverTest {
 
     @Karate.Test
     Karate addCustomerTest() {
-        return Karate.run("CreateCustomer").relativeTo(getClass());
+        return Karate.run("classpath:resolver/CreateCustomer.feature");
     }
 
 
     @Karate.Test
     @Sql("/test-data/add-customer.sql")
     Karate customerByIdTest() {
-        return Karate.run("CustomerById").relativeTo(getClass());
+        return Karate.run("classpath:resolver/CustomerById.feature");
     }
 
     @Karate.Test
     @Sql("/test-data/add-customers.sql")
     Karate allCustomersFilledListTest() {
-        return Karate.run("AllCustomers").relativeTo(getClass());
+        return Karate.run("classpath:resolver/AllCustomers.feature");
     }
 
     @Karate.Test
     @Sql("/test-data/empty-customers.sql")
     Karate allCustomersEmptyListTest() {
-        return Karate.run("EmptyCustomerList").relativeTo(getClass());
+        return Karate.run("classpath:resolver/EmptyCustomerList.feature");
     }
 
 }

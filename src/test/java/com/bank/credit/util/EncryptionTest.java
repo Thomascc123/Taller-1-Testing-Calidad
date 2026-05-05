@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @DisplayName("Utils tests")
-public class EncryptionTest {
+class EncryptionTest {
 
      @Test
      @DisplayName("Testing comparation of a word and the encrypted word")
