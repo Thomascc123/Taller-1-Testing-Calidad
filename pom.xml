@@ -28,6 +28,13 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+			<sonar.coverage.jacoco.xmlReportPaths>
+				${project.build.directory}/site/jacoco/jacoco.xml
+			</sonar.coverage.jacoco.xmlReportPaths>
+			<sonar.projectKey>Thomascc123_Taller-1-Testing-Calidad</sonar.projectKey>
+			<sonar.organization>thomascc123</sonar.organization>
+			<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+			<surefireArgLine></surefireArgLine>
 	</properties>
 	<dependencies>
 		<!-- Springboot -->
@@ -138,50 +145,12 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.6</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<!-- attached to Maven test phase -->
-					<execution>
-						<id>report</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.6</version>
-				<executions>
-					<execution>
-						<id>prepare-agent</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<configuration>
-							<destFile>${project.build.directory}/jacoco.exec</destFile>
-							<propertyName>surefireArgLine</propertyName>
-						</configuration>
-					</execution>
-					<execution>
-						<id>report</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-						<configuration>
-						</configuration>
-					</execution>
-				</executions>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.2.5</version> 
+				<configuration>
+					<argLine>${surefireArgLine}</argLine>
+				</configuration>
 			</plugin>
 		</plugins>
 		<testResources>
@@ -196,5 +165,42 @@
 			</testResource>
 		</testResources>
 	</build>
+<profiles>
+	<profile>
+		<id>coverage</id>
+		<build>
+		<plugins>
+			<plugin>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.11</version>
+			<executions>
+				<execution>
+				<id>prepare-agent</id>
+				<goals>
+					<goal>prepare-agent</goal>
+				</goals>
+				<configuration>
+					<destFile>${project.build.directory}/jacoco.exec</destFile>
+					<propertyName>surefireArgLine</propertyName>
+				</configuration>
+			</execution>
+			<execution>
+				<id>report</id>
+				<phase>test</phase>
+				<goals>
+					<goal>report</goal>
+				</goals>
+				<configuration>
+					<!-- Sonar necesita el formato XML -->
+					<outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
+				</configuration>
+			</execution>
+			</executions>
+			</plugin>
+		</plugins>
+		</build>
+	</profile>
+</profiles>
 
 </project>
