@@ -11,7 +11,7 @@ class BussinessExceptionsTest {
 
     @Test
     @DisplayName("Customer Not Found Exception Test")
-    public void customerNotFoundExceptionTest(){
+    void customerNotFoundExceptionTest(){
 
         CustomerNotFoundException customerNotFoundException = new CustomerNotFoundException();
 
