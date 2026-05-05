@@ -60,4 +60,4 @@ jobs:
           DB_URL: jdbc:mysql://localhost:3306/bank_test
           DB_USERNAME: bankapp
           DB_PASSWORD: strongPassword254!$
-        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Pcoverage
+        run: mvn -B clean verify sonar:sonar -Pcoverage
