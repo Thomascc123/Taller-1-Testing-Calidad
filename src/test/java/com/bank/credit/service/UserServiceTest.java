@@ -19,6 +19,8 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 
+@SpringBootTest
+@ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
     @InjectMocks
