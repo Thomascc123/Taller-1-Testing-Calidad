@@ -45,7 +45,7 @@ public class Credit {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private CreditStatus status = CreditStatus.En_Revision;
+    private CreditStatus status = CreditStatus.EN_REVISION;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", insertable=false, updatable=false)
@@ -177,19 +177,19 @@ public class Credit {
     }
 
     public enum CreditType {
-        Leasing,
-        Consumo,
-        Hipotecario,
-        Educativo,
-        Negocio
+        LEASING,
+        CONSUMO,
+        HIPOTECARIO,
+        EDUCATIVO,
+        NEGOCIO
     }
 
     public enum CreditStatus {
-        En_Revision,
-        Activo,
-        Cancelado,
-        Mora,
-        Cobro_Juridico,
+        EN_REVISION,
+        ACTIVO,
+        CANCELADO,
+        MORA,
+        COBRO_JURIDICO,
 
     }
 

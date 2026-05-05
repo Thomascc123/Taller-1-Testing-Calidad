@@ -39,7 +39,7 @@ class CreditServiceTest {
     void setup() {
         activeCustomer = new Customer();
         activeCustomer.setCustomerId(1L);
-        activeCustomer.setStatus(CustomerStatus.Activo);
+        activeCustomer.setStatus(CustomerStatus.ACTIVO);
     }
 
     @Test
@@ -47,15 +47,15 @@ class CreditServiceTest {
         //Arrange
         Credit credit1 = new Credit();
         credit1.setCreditId(1L);
-        credit1.setType(CreditType.Consumo);
+        credit1.setType(CreditType.CONSUMO);
 
         Credit credit2 = new Credit();
         credit1.setCreditId(2L);
-        credit2.setType(CreditType.Consumo);
+        credit2.setType(CreditType.CONSUMO);
 
         Credit credit3 = new Credit();
         credit3.setCreditId(3L);
-        credit3.setType(CreditType.Consumo);
+        credit3.setType(CreditType.CONSUMO);
 
         List<Credit> credits = List.of(credit1,credit2,credit3);
 
@@ -66,9 +66,9 @@ class CreditServiceTest {
 
         //Assert
         assertEquals(3, result.size());
-        assertEquals(CreditType.Consumo, result.get(0).getType());
-        assertEquals(CreditType.Consumo, result.get(1).getType());
-        assertEquals(CreditType.Consumo, result.get(2).getType());
+        assertEquals(CreditType.CONSUMO, result.get(0).getType());
+        assertEquals(CreditType.CONSUMO, result.get(1).getType());
+        assertEquals(CreditType.CONSUMO, result.get(2).getType());
     }
 
     @Test
@@ -78,14 +78,14 @@ class CreditServiceTest {
         when(creditRepository.save(any(Credit.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
        //Act
-        Credit result = creditService.grantCredit(1L, CreditType.Consumo, 10000.0, (short) 12);
+        Credit result = creditService.grantCredit(1L, CreditType.CONSUMO, 10000.0, (short) 12);
 
         //Assert
         assertNotNull(result);
         assertEquals(1L, result.getCustomerId());
-        assertEquals(CreditType.Consumo, result.getType());
+        assertEquals(CreditType.CONSUMO, result.getType());
         assertEquals(10000.0, result.getAmount());
-        assertEquals(Credit.CreditStatus.Activo, result.getStatus());
+        assertEquals(Credit.CreditStatus.ACTIVO, result.getStatus());
     }
 
     @Test
@@ -96,7 +96,7 @@ class CreditServiceTest {
         //Act
         RuntimeException thrown = assertThrows(
                 CustomerNotFoundException.class,
-                () -> creditService.grantCredit(1L, CreditType.Consumo, 10000.0, (short) 12)
+                () -> creditService.grantCredit(1L, CreditType.CONSUMO, 10000.0, (short) 12)
         );
 
         //Assert
@@ -108,7 +108,7 @@ class CreditServiceTest {
         //Arrange
         Customer inactiveCustomer = new Customer();
         inactiveCustomer.setCustomerId(1L);
-        inactiveCustomer.setStatus(CustomerStatus.Inactivo);
+        inactiveCustomer.setStatus(CustomerStatus.INACTIVO);
 
         when(customerRepository.findById(1L))
                 .thenReturn(Optional.of(inactiveCustomer));
@@ -116,7 +116,7 @@ class CreditServiceTest {
         //Act
         RuntimeException thrown = assertThrows(
                 RuntimeException.class,
-                () -> creditService.grantCredit(1L, CreditType.Consumo, 10000.0, (short) 12)
+                () -> creditService.grantCredit(1L, CreditType.CONSUMO, 10000.0, (short) 12)
         );
 
         //Assert
@@ -128,7 +128,7 @@ class CreditServiceTest {
         //Arrange
         Customer defaulter = new Customer();
         defaulter.setCustomerId(1L);
-        defaulter.setStatus(CustomerStatus.Moroso);
+        defaulter.setStatus(CustomerStatus.MOROSO);
 
         when(customerRepository.findById(1L))
                 .thenReturn(Optional.of(defaulter));
@@ -136,7 +136,7 @@ class CreditServiceTest {
         //Act
         RuntimeException thrown = assertThrows(
                 RuntimeException.class,
-                () -> creditService.grantCredit(1L, CreditType.Consumo, 10000.0, (short) 12)
+                () -> creditService.grantCredit(1L, CreditType.CONSUMO, 10000.0, (short) 12)
         );
 
         //Assert

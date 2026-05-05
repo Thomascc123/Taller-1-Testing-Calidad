@@ -33,7 +33,7 @@ public class Customer {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private CustomerStatus status = CustomerStatus.Activo;
+    private CustomerStatus status = CustomerStatus.ACTIVO;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Credit> credits;
@@ -125,9 +125,9 @@ public class Customer {
     }
 
     public enum CustomerStatus {
-        Activo,
-        Inactivo,
-        Moroso
+        ACTIVO,
+        INACTIVO,
+        MOROSO
     }
 
     public enum DocumentType {

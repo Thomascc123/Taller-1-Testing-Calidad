@@ -41,7 +41,7 @@ public class CustomerService {
             customer.setPhoneNumber(phoneNumber);
             customer.setDocumentType(enumDocumentType);
             customer.setDocumentNumber(documentNumber);
-            customer.setStatus(CustomerStatus.Activo);
+            customer.setStatus(CustomerStatus.ACTIVO);
 
             return customerRepository.save(customer);
 

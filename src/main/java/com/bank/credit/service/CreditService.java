@@ -37,11 +37,11 @@ public class CreditService {
         Customer customer = customerRepository.findById(customerId)
         .orElseThrow(CustomerNotFoundException::new);
 
-        if (customer.getStatus().equals(CustomerStatus.Moroso)){
+        if (customer.getStatus().equals(CustomerStatus.MOROSO)){
             throw new DefaulterCustomerException();
         }
 
-        if (!customer.getStatus().equals(CustomerStatus.Activo)){
+        if (!customer.getStatus().equals(CustomerStatus.ACTIVO)){
             throw new InactiveCustomerException();
         }
 
@@ -70,7 +70,7 @@ public class CreditService {
         credit.setPaymentsDelayed(paymentsDelayed);
         credit.setPaymentValue(paymentValue);
         credit.setInterestRate(interestRate);
-        credit.setStatus(CreditStatus.Activo);
+        credit.setStatus(CreditStatus.ACTIVO);
 
         return creditRepository.save(credit);
 
@@ -82,11 +82,11 @@ public class CreditService {
         according the given type as a percentage in fraction form
          */
         switch(type){
-            case Leasing: return 0.18;
-            case Hipotecario: return 0.15;
-            case Consumo: return 0.30;
-            case Educativo: return 0.13;
-            case Negocio: return 0.12;
+            case LEASING: return 0.18;
+            case HIPOTECARIO: return 0.15;
+            case CONSUMO: return 0.30;
+            case EDUCATIVO: return 0.13;
+            case NEGOCIO: return 0.12;
             
             default: return null;
         }

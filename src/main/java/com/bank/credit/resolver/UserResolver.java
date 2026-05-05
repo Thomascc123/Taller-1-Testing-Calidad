@@ -46,14 +46,14 @@ public class UserResolver {
         
         Customer customer = customerService.addCustomer(name, lastName, email, phoneNumber, documentType, documentNumber);
         
-        User user = userService.addUser(customer.getCustomerId(), email, password, UserRole.Usuario);
+        User user = userService.addUser(customer.getCustomerId(), email, password, UserRole.USUARIO);
         user.setCustomer(customer);
         return user;
 
     }
 
     @QueryMapping
-    public User Login(@Argument String email, @Argument String password){
-        return userService.Login(email, password);
+    public User login(@Argument String email, @Argument String password){
+        return userService.login(email, password);
     }
 }
