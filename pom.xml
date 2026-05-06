@@ -144,7 +144,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.2.5</version> 
 				<configuration>
-					<argLine>${surefireArgLine}</argLine>
+					<argLine>@{surefireArgLine}</argLine>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -176,7 +176,6 @@
 					<goal>prepare-agent</goal>
 				</goals>
 				<configuration>
-					<destFile>${project.build.directory}/jacoco.exec</destFile>
 					<propertyName>surefireArgLine</propertyName>
 				</configuration>
 			</execution>
@@ -187,8 +186,10 @@
 					<goal>report</goal>
 				</goals>
 				<configuration>
-					<!-- Sonar necesita el formato XML -->
 					<outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
+					<formats>
+						<format>XML</format>
+					</formats>
 				</configuration>
 			</execution>
 			</executions>
