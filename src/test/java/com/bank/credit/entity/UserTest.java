@@ -3,7 +3,7 @@ package com.bank.credit.entity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.bank.credit.entity.User.UserRole;
+import com.bank.credit.enums.UserRole;
 
 import static org.junit.jupiter.api.Assertions.*;
 

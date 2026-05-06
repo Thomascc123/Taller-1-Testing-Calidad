@@ -1,7 +1,8 @@
 package com.bank.credit.entity;
 
 import java.util.List;
-
+import com.bank.credit.enums.CustomerStatus;
+import com.bank.credit.enums.DocumentType;
 import jakarta.persistence.*;
 
 @Entity
@@ -122,35 +123,6 @@ public class Customer {
 
     public void setCredits(List<Credit> credits) {
         this.credits = credits;
-    }
-
-    public enum CustomerStatus {
-        ACTIVO,
-        INACTIVO,
-        MOROSO
-    }
-
-    public enum DocumentType {
-        CEDULA_CIUDADANIA("Cédula de ciudadanía"),
-        PASAPORTE("Pasaporte"),
-        CEDULA_EXTRANJERIA("Cédula de extranjería");
-
-        private final String label;
-
-        DocumentType(String label){
-            this.label = label;
-        }
-
-        public String getLabel(){
-            return label;
-        }
-
-        public static DocumentType fromLabel(String label){
-            for (DocumentType type : values()){
-                if (type.label.equals(label)) return type;
-            }
-            throw new IllegalArgumentException("Invalid document type "+label);
-        }
     }
 
 }

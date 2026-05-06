@@ -5,7 +5,7 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.stereotype.Controller;
 
 import com.bank.credit.entity.Credit;
-import com.bank.credit.entity.Credit.CreditType;
+import com.bank.credit.enums.CreditType;
 import com.bank.credit.exception.InvalidCreditTypeException;
 import com.bank.credit.service.CreditService;
 

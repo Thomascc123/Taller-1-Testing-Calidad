@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 import com.bank.credit.entity.Credit;
-import com.bank.credit.entity.Credit.CreditType;
+import com.bank.credit.enums.CreditType;
 import com.bank.credit.entity.Customer;
-import com.bank.credit.entity.Customer.CustomerStatus;
+import com.bank.credit.enums.CustomerStatus;
+import com.bank.credit.enums.CreditStatus;
 import com.bank.credit.exception.CustomerNotFoundException;
 import com.bank.credit.repository.CreditRepository;
 import com.bank.credit.repository.CustomerRepository;
@@ -85,7 +86,7 @@ class CreditServiceTest {
         assertEquals(1L, result.getCustomerId());
         assertEquals(CreditType.CONSUMO, result.getType());
         assertEquals(10000.0, result.getAmount());
-        assertEquals(Credit.CreditStatus.ACTIVO, result.getStatus());
+        assertEquals(CreditStatus.ACTIVO, result.getStatus());
     }
 
     @Test

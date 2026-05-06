@@ -3,6 +3,8 @@ package com.bank.credit.entity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import com.bank.credit.enums.CreditType;
+import com.bank.credit.enums.CreditStatus;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 
@@ -28,11 +30,11 @@ class CreditTest {
         Customer customerTest = new Customer();
         LocalDate time = LocalDateTime.of(2012, 6, 30, 12, 0).toLocalDate();
 
-        Credit credit = new Credit(345678456L, 1234235355L, Credit.CreditType.HIPOTECARIO, 22000.05,  0.5,time, (short)74,  (short)3543, 77000.00, (short) 7, 0.1,  Credit.CreditStatus.ACTIVO, customerTest);
+        Credit credit = new Credit(345678456L, 1234235355L, CreditType.HIPOTECARIO, 22000.05,  0.5,time, (short)74,  (short)3543, 77000.00, (short) 7, 0.1, CreditStatus.ACTIVO, customerTest);
 
         assertEquals(345678456L,credit.getCreditId());
         assertEquals(1234235355L,credit.getCustomerId());
-        assertEquals(Credit.CreditType.HIPOTECARIO,credit.getType());
+        assertEquals(CreditType.HIPOTECARIO,credit.getType());
         assertEquals(22000.05,credit.getAmount());
         assertEquals(0.5,credit.getBalance());
         assertEquals(time,credit.getGrantedDate());
@@ -41,7 +43,7 @@ class CreditTest {
         assertEquals(77000.00,credit.getPaymentValue());
         assertEquals((short)7,credit.getPaymentsDelayed());
         assertEquals(0.1,credit.getInterestRate());
-        assertEquals(Credit.CreditStatus.ACTIVO,credit.getStatus());
+        assertEquals(CreditStatus.ACTIVO,credit.getStatus());
         assertEquals(customerTest,credit.getCustomer());
     }
 
@@ -70,9 +72,9 @@ class CreditTest {
     void testTypeGetterSetter(){
         Credit credit = new Credit();
 
-        credit.setType(Credit.CreditType.CONSUMO);
+        credit.setType(CreditType.CONSUMO);
 
-        assertEquals(Credit.CreditType.CONSUMO, credit.getType());
+        assertEquals(CreditType.CONSUMO, credit.getType());
     }
 
     @Test
@@ -161,9 +163,9 @@ class CreditTest {
     void testStatusGetterSetter(){
         Credit credit = new Credit();
 
-        credit.setStatus(Credit.CreditStatus.EN_REVISION);
+        credit.setStatus(CreditStatus.EN_REVISION);
 
-        assertEquals(Credit.CreditStatus.EN_REVISION, credit.getStatus());
+        assertEquals(CreditStatus.EN_REVISION, credit.getStatus());
     }
 
     @Test

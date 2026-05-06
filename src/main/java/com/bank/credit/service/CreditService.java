@@ -7,10 +7,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bank.credit.entity.Credit;
-import com.bank.credit.entity.Credit.CreditStatus;
-import com.bank.credit.entity.Credit.CreditType;
+import com.bank.credit.enums.CreditStatus;
+import com.bank.credit.enums.CreditType;
 import com.bank.credit.entity.Customer;
-import com.bank.credit.entity.Customer.CustomerStatus;
+import com.bank.credit.enums.CustomerStatus;
 import com.bank.credit.exception.CustomerNotFoundException;
 import com.bank.credit.exception.DefaulterCustomerException;
 import com.bank.credit.exception.InactiveCustomerException;

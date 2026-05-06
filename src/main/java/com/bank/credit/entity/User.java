@@ -1,5 +1,6 @@
 package com.bank.credit.entity;
 
+import com.bank.credit.enums.UserRole;
 import jakarta.persistence.*;
 
 
@@ -88,8 +89,4 @@ public class User {
         this.role = role;
     }
 
-    public enum UserRole {
-        USUARIO,
-        ADMINISTRADOR,
-    }
 }

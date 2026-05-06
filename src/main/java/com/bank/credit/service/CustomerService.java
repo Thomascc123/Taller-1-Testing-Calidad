@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bank.credit.entity.Customer;
-import com.bank.credit.entity.Customer.DocumentType;
-import com.bank.credit.entity.Customer.CustomerStatus;
+import com.bank.credit.enums.DocumentType;
+import com.bank.credit.enums.CustomerStatus;
 import com.bank.credit.repository.CustomerRepository;
 import com.bank.credit.exception.*;
 

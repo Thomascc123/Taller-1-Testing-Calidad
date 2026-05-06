@@ -1,7 +1,8 @@
 package com.bank.credit.entity;
 
 import java.time.LocalDate;
-
+import com.bank.credit.enums.CreditType;
+import com.bank.credit.enums.CreditStatus;
 import jakarta.persistence.*;
 
 @Entity
@@ -174,23 +175,6 @@ public class Credit {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public enum CreditType {
-        LEASING,
-        CONSUMO,
-        HIPOTECARIO,
-        EDUCATIVO,
-        NEGOCIO
-    }
-
-    public enum CreditStatus {
-        EN_REVISION,
-        ACTIVO,
-        CANCELADO,
-        MORA,
-        COBRO_JURIDICO,
-
     }
 
 }

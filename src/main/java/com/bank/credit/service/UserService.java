@@ -1,5 +1,6 @@
 package com.bank.credit.service;
 
+import com.bank.credit.enums.UserRole;
 import com.bank.credit.entity.User;
 import com.bank.credit.exception.CustomerHasUserException;
 import com.bank.credit.exception.InvalidPasswordException;
@@ -29,7 +30,7 @@ public class UserService {
                                  .orElseThrow(() -> new UserNotFoundException());
     }
 
-    public User addUser(Long customerId, String email, String password, User.UserRole role){
+    public User addUser(Long customerId, String email, String password, UserRole role){
 
         if (!userRepository.findByCustomerId(customerId).isEmpty()) {
             throw new CustomerHasUserException();
