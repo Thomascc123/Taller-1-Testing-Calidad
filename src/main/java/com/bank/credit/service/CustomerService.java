@@ -25,7 +25,7 @@ public class CustomerService {
 
     public Customer getCustomer(Long customerId){
         return customerRepository.findById(customerId)
-                                 .orElseThrow(() -> new CustomerNotFoundException());
+                                 .orElseThrow(CustomerNotFoundException::new);
     }
 
     public Customer addCustomer(String name, String lastName, String email, String phoneNumber, 

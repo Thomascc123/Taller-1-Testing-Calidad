@@ -5,7 +5,6 @@ import com.bank.credit.entity.User;
 import com.bank.credit.exception.CustomerHasUserException;
 import com.bank.credit.exception.InvalidPasswordException;
 import com.bank.credit.exception.UserNotFoundException;
-import com.bank.credit.repository.CustomerRepository;
 import com.bank.credit.repository.UserRepository;
 import com.bank.credit.util.Encryption;
 
@@ -17,7 +16,7 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository, CustomerRepository customerRepository){
+    public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
     }
 
@@ -27,7 +26,7 @@ public class UserService {
 
     public User getUser(Long userId){
         return userRepository.findById(userId)
-                                 .orElseThrow(() -> new UserNotFoundException());
+                                 .orElseThrow(UserNotFoundException::new);
     }
 
     public User addUser(Long customerId, String email, String password, UserRole role){
